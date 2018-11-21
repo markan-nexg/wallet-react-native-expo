@@ -4,6 +4,7 @@ import { COLOR, ThemeProvider, ThemeContext, getTheme, Toolbar, Card } from 'rea
 import { Constants, BarCodeScanner, Permissions } from 'expo';
 import { TextInput } from 'react-native-gesture-handler';
 import Container from '../containers/Container';
+import { createKeys } from '../utils/walletUtil';
 
 export default class BarcodeScanner extends React.Component {
   static navigationOptions = {
@@ -39,6 +40,11 @@ export default class BarcodeScanner extends React.Component {
   _handleBarCodeScanned = ({ type, data }) => {
     // alert(`Bar code with type ${type} and data ${data} has been scanned!`);
     console.log(data);
+    
+    //키생성
+    console.log(createKeys());
+
+    // 화면 이동
     this.props.navigation.navigate('Wallets');
     // this.props.navigator.push({
     //   component: {
@@ -68,7 +74,7 @@ export default class BarcodeScanner extends React.Component {
 
   render() {
     const { hasCameraPermission } = this.state;
-    const { navigate } = this.props.navigation;
+    const { navigate, state  } = this.props.navigation;
 
     // if (hasCameraPermission === null) {
     //   return <Text>Requesting for camera permission</Text>;
@@ -76,15 +82,16 @@ export default class BarcodeScanner extends React.Component {
     // if (hasCameraPermission === false) {
     //   return <Text>No access to camera</Text>;
     // }
-    console.log(this.props)
+    // console.log(this.props)
 
     return (
+
       <Container>
         <StatusBar barStyle="default"/>
         <Toolbar
               leftElement="arrow-back"
               onLeftElementPress={() => this.props.navigation.goBack()}
-              centerElement="Card"
+              centerElement={state.params.title}
           />
           <View style={styles.container}>
             {

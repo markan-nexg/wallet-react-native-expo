@@ -11,13 +11,14 @@ class Wallets extends Component {
   };
 
   render() {
+    const { navigate, state } = this.props.navigation;
+
     return (
       <Container>
-        <StatusBar barStyle="default"/>
         <Toolbar
               leftElement="arrow-back"
               onLeftElementPress={() => this.props.navigation.goBack()}
-              centerElement="Card"
+              centerElement={state.params.title}
           />
         <Card>
           <View style={styles.textContainer}>

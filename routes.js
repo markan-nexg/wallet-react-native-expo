@@ -46,9 +46,9 @@ const AppNavigator = StackNavigator({
 */
  
 const AppNavigator = createStackNavigator({
-  Home: { screen: Home },
-  BarcodeScanner: { screen: BarcodeScanner },
-  Wallets: { screen: Wallets,  navigationOptions: { header: null}},
+  Home: { screen: Home, params: { title: 'Test' },  navigationOptions: {title: `Test`} },
+  BarcodeScanner: { screen: BarcodeScanner, params: { title: '바코드' } },
+  Wallets: { screen: Wallets, params: { title: '지갑' },  navigationOptions: { header: null}},
 }, {
   headerMode: 'none',
 });

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, StatusBar } from 'react-native';
+import { COLOR } from 'react-native-material-ui';
 import { Constants } from 'expo';
 import { PropTypes } from 'prop-types';
 
@@ -10,16 +11,20 @@ const propTypes = {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // backgroundColor: "#C2185B",
-        paddingTop: Constants.statusBarHeight,
     },
-});
+    statusBar: {
+      height: Constants.statusBarHeight,
+      backgroundColor: COLOR.lightBlueA400,
+    }
+}); 
 
 class Container extends Component {
     render() {
         return (
           <View style={styles.container}>
-              {this.props.children}
+            <StatusBar barStyle="light-content" />
+            <View style={styles.statusBar} />
+            {this.props.children}
           </View>
         );
     }

@@ -30,13 +30,15 @@ class Home extends Component {
   };
 
   render() {
-    const { navigate } = this.props.navigation;
+    const { navigate, state } = this.props.navigation;
+    console.log(this.props.navigation.state.params); // 
+    console.log(this.props.navigation.state.routeName); // 
+
     return (
       <Container>
-        <StatusBar barStyle="dark-content" />
         <Toolbar
               leftElement="dehaze"            
-              centerElement="Card"
+              centerElement={state.params.title}
           />
           <View style={{marginTop:10}}>
             <Card>
